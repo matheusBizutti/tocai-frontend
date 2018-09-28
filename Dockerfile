@@ -7,4 +7,4 @@ RUN npm ci
 
 ADD ./ /sources
 
-RUN npm run build
+CMD ["npm", "run", "start:prod"]
