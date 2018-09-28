@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:port": "ng serve --port 8081",
+    "start:port": "ng serve --port 8081 --host=40.121.33.135",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
