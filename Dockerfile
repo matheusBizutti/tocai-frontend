@@ -1,4 +1,4 @@
-ARG  NODE_VERSION=latest
+ARG NODE_VERSION=latest
 FROM node:${NODE_VERSION}
 
 ADD ["package.json", "package-lock.json" , "/sources/"]
@@ -7,4 +7,7 @@ RUN npm ci
 
 ADD ./ /sources
 
-CMD ["npm", "run", "start:port"]
+RUN npm run build
+
+FROM docker.totvs.io/thf/proxy
+COPY --from=0 /sources/dist/tocai-frontend /sources
