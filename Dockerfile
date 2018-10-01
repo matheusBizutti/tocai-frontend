@@ -1,13 +1,23 @@
 ARG NODE_VERSION=latest
 FROM node:${NODE_VERSION}
 
-ADD ["package.json", "package-lock.json" , "/sources/"]
-WORKDIR /sources
-RUN npm ci
+# Create a directory where our app will be placed
+RUN mkdir -p /usr/src/app
 
-ADD ./ /sources
+# Change directory so that our commands run inside this new directory
+WORKDIR /usr/src/app
 
-RUN npm run build
+# Copy dependency definitions
+COPY package.json /usr/src/app
 
-FROM docker.totvs.io/thf/proxy
-COPY --from=0 /sources/dist/tocai-frontend /sources
+# Install dependecies
+RUN npm install
+
+# Get all the code needed to run the app
+COPY . /usr/src/app
+
+# Expose the port the app runs in
+EXPOSE 4200
+
+# Serve the app
+CMD ["npm", "start"]
