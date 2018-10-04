@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "6.1.7",
     "@angular/platform-server": "6.1.7",
     "@angular/router": "6.1.7",
-    "@totvs/thf-ui": "^2.1.0",
+    "@totvs/thf-ui": "^2.1.1",
     "angular2-highlight-js": "^6.0.1-alpha",
     "core-js": "2.5.7",
     "ngx-cookie-service": "^1.0.10",
