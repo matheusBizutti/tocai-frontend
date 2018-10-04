@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { InitialPageComponent } from './initial-page.component';
 import { InitialPageRouting } from './initial-page.routing';
+import { FooterComponent } from '../footer/footer.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { InitialPageRouting } from './initial-page.routing';
     InitialPageRouting
   ],
   declarations: [
-    InitialPageComponent
+    InitialPageComponent,
+    FooterComponent
   ],
   providers: [],
   bootstrap: []

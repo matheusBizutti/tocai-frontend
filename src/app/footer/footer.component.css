@@ -1,0 +1,21 @@
+.footer {
+  background: black;
+	width: 100%;
+  color: white;
+	position: absolute;
+	bottom: 0;
+}
+
+.footer-item-link {
+  cursor: pointer;
+  color:white;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
