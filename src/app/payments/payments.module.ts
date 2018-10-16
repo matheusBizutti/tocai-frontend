@@ -16,4 +16,4 @@ import { PaymentsRouting } from './payments.routing';
   providers: [],
   bootstrap: []
 })
-export class PaymentsModule { }
+export class PaymentsModule {}

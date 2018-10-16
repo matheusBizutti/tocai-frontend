@@ -14,7 +14,7 @@
         class="thf-md-6 thf-pt-2 thf-pl-0"
         t-icon="thf-icon-arrow-right"
         t-label="Entre para se apresentar"
-        (t-click)="onClick()">
+        (t-click)="openModal(1)">
       </thf-button>
     </div>
   
@@ -26,9 +26,52 @@
         class="thf-md-6 thf-pt-2 thf-pl-0"
         t-icon="thf-icon-arrow-right"
         t-label="Entre para contratar"
-        (t-click)="onClick()">
+        (t-click)="openModal(2)">
       </thf-button>
     </div>
   </div>
   <app-footer></app-footer>
 </div>
+
+<thf-modal #modalPartners
+  t-click-out="true"
+  t-size="lg"
+  t-title="Entre como parceiro">
+
+  <form #form="ngForm">
+    <div class="thf-row thf-pb-1">
+      <thf-input
+        class="thf-md-12"
+        name="login"
+        [(ngModel)]="login"
+        t-clean
+        t-icon="thf-icon-user"
+        t-placeholder="Informe seu login"
+        t-required>
+      </thf-input>
+    </div>
+  
+    <div class="thf-row thf-pb-1">
+      <thf-input
+        class="thf-md-12"
+        name="password"
+        [(ngModel)]="password"
+        t-clean
+        t-icon="thf-icon-lock"
+        t-placeholder="Informe sua senha"
+        t-required>
+      </thf-input>
+    </div>
+  
+    <div class="thf-row">
+      <thf-button
+        class="thf-md-12"
+        t-label="Entrar"
+        t-type="primary"
+        [t-disabled]="form.invalid"
+        (t-click)="mockCall();">
+      </thf-button>
+    </div>
+  </form>
+
+</thf-modal>

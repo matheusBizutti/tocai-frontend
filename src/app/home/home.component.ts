@@ -15,9 +15,9 @@ export class HomeComponent implements OnInit {
 
   filter = true;
   items: Array<ThfMenuItem> = [
-    { label: 'Pagamentos', link: './users', icon: 'user' },
-    { label: 'Eventos', link: '', icon: 'world' },
-    { label: 'Perfil', link: '', icon: 'calendar  ' }
+    { label: 'Pagamentos', link: './users', icon: 'user', shortLabel: 'Pagtos' },
+    { label: 'Eventos', link: '', icon: 'world', shortLabel: 'Eventos' },
+    { label: 'Perfil', link: '', icon: 'calendar', shortLabel: 'Perfil' }
   ];
 
   public readonly profile: ThfToolbarProfile = {
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 
   // private exit() {
   //   this.authService.clear();
-  //   this.route.navigate(['/login']);
+  //   this.route.navigate(['/initial-page']);
   // }
 
   // private getEmail() {
