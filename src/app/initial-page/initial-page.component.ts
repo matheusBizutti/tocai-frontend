@@ -10,24 +10,38 @@ import { ThfModalComponent } from '@totvs/thf-ui/components/thf-modal/thf-modal.
 })
 export class InitialPageComponent implements OnInit {
 
+  @ViewChild('modalCustomers') modalCustomers: ThfModalComponent;
   @ViewChild('modalPartners') modalPartners: ThfModalComponent;
 
   private login;
+  private isLoginDefault: boolean;
   private password;
 
   constructor(private router: Router) { }
 
   ngOnInit() { }
 
+  enableLoginDefault() {
+    this.isLoginDefault = !this.isLoginDefault;
+  }
+
   openModal(modalType = 1) {
     if (modalType === 1) {
       this.modalPartners.open();
     } else {
-      // open the next modal.
+      this.isLoginDefault = false;
+      this.modalCustomers.open();
     }
   }
 
   mockCall() {
+
+    localStorage.setItem('teste', 'logged');
+    this.router.navigate(['tocai/payments']);
+
+  }
+
+  loginDefault() {
 
     localStorage.setItem('teste', 'logged');
     this.router.navigate(['tocai/payments']);

@@ -1,33 +1,38 @@
 <div class="container">
-  <div class="thf-row thf-pt-2 thf-pl-sm-2 thf-pr-sm-2 thf-pl-3 thf-pr-3">
-    <div class="thf-md-12">
-      <h1 class="thf-font-display">Pulsando no ritmo do seu evento</h1>
+  <div class="container-fluid">
+    <div class="thf-row thf-pt-2 thf-pl-sm-2 thf-pr-sm-2 thf-pl-3 thf-pr-3">
+      <div class="thf-md-12">
+        <h1 class="thf-font-display">Pulsando no ritmo do seu evento</h1>
+      </div>
     </div>
-  </div>
-  
-  <div class="thf-row thf-pt-3 thf-pb-3 thf-pl-sm-2 thf-pr-sm-2 thf-pl-3 thf-pr-3">
-    <div class="thf-md-6">
-      <span class="thf-font-subtitle">Faça acontecer</span>
-      <p>Encontre oportunidades perto de você, para mostrar o seu talento.</p>
-  
-      <thf-button
-        class="thf-md-6 thf-pt-2 thf-pl-0"
-        t-icon="thf-icon-arrow-right"
-        t-label="Entre para se apresentar"
-        (t-click)="openModal(1)">
-      </thf-button>
-    </div>
-  
-    <div class="thf-md-6 thf-pt-sm-2">
-      <span class="thf-font-subtitle">Contrate</span>
-      <p>Dê vida ao seu evento, contrate um serviço, tudo pelo seu telefone.</p>
-  
-      <thf-button
-        class="thf-md-6 thf-pt-2 thf-pl-0"
-        t-icon="thf-icon-arrow-right"
-        t-label="Entre para contratar"
-        (t-click)="openModal(2)">
-      </thf-button>
+      
+    <div class="thf-row thf-pt-3 thf-pb-3 thf-pl-sm-2 thf-pr-sm-2 thf-pl-3 thf-pr-3">
+      <div class="thf-md-6">
+        <span class="thf-font-subtitle">Seja um parceiro</span>
+        <p>Encontre oportunidades perto de você, e mostre todo o seu talento.</p>
+    
+        <div class="thf-pt-3">
+          <thf-button
+            t-icon="thf-icon-arrow-right"
+            t-label="Entre para se apresentar"
+            (t-click)="openModal(1)">
+          </thf-button>
+        </div>
+      </div>
+    
+      <div class="thf-md-6 thf-pt-sm-2">
+        <span class="thf-font-subtitle">Seja um cliente</span>
+        <p>Dê vida ao seu evento, contrate um serviço, tudo pelo seu smartphone.</p>
+    
+        <div class="thf-pt-3">
+          <thf-button
+            class="thf-pt-2"
+            t-icon="thf-icon-arrow-right"
+            t-label="Entre para contratar"
+            (t-click)="openModal(2)">
+          </thf-button>
+        </div>
+      </div>
     </div>
   </div>
   <app-footer></app-footer>
@@ -38,7 +43,7 @@
   t-size="lg"
   t-title="Entre como parceiro">
 
-  <form #form="ngForm">
+  <form #formPartners="ngForm">
     <div class="thf-row thf-pb-1">
       <thf-input
         class="thf-md-12"
@@ -68,9 +73,91 @@
         class="thf-md-12"
         t-label="Entrar"
         t-type="primary"
-        [t-disabled]="form.invalid"
+        [t-disabled]="formPartners.invalid"
         (t-click)="mockCall();">
       </thf-button>
+    </div>
+  </form>
+
+</thf-modal>
+
+<thf-modal #modalCustomers
+  t-click-out="true"
+  t-size="lg"
+  t-title="Entre como cliente">
+
+  <div class="thf-row">
+    <thf-button
+      class="thf-md-12"
+      t-label="ENTRAR COM FACEBOOK"
+      t-type="default"
+      (t-click)="mockCall();">
+    </thf-button>
+  </div>
+
+  <div class="thf-row thf-pt-2">
+    <thf-button
+      class="thf-md-12"
+      t-label="ENTRAR COM GMAIL"
+      t-type="danger"
+      (t-click)="mockCall();">
+    </thf-button>
+  </div>
+
+  <div class="thf-row thf-pt-2">
+    <thf-button
+      class="thf-md-12"
+      t-label="ENTRAR COM E-MAIL"
+      t-type="primary"
+      (t-click)="enableLoginDefault();">
+    </thf-button>
+  </div>
+
+  <form #formCustomers="ngForm" *ngIf="isLoginDefault">
+    <div class="thf-row thf-pt-2 thf-pb-1">
+      <thf-input
+        class="thf-md-12"
+        name="login"
+        [(ngModel)]="login"
+        t-clean
+        t-icon="thf-icon-user"
+        t-placeholder="Informe seu login"
+        t-required>
+      </thf-input>
+    </div>
+  
+    <div class="thf-row thf-pb-1">
+      <thf-input
+        class="thf-md-12"
+        name="password"
+        [(ngModel)]="password"
+        t-clean
+        t-icon="thf-icon-lock"
+        t-placeholder="Informe sua senha"
+        t-required>
+      </thf-input>
+    </div>
+  
+    <div class="thf-row">
+      <thf-button
+        class="thf-md-12"
+        t-label="Entrar"
+        t-type="primary"
+        [t-disabled]="formCustomers.invalid"
+        (t-click)="mockCall();">
+      </thf-button>
+    </div>
+
+    <div class="thf-row">
+      <div class="thf-page-login-recovery-link">
+        <a class="thf-font-text-large-bold" (click)="mockCall()">Esqueci minha senha</a>
+      </div>
+    </div>
+
+    <div class="thf-row">
+      <div class="thf-page-login-recovery-link thf-md-12">
+        <a class="thf-font-text-large-bold" (click)="mockCall()">Cadastrar</a>
+      </div>
     </div>
   </form>
 
