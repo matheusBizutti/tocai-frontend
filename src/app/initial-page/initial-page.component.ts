@@ -25,13 +25,16 @@ export class InitialPageComponent implements OnInit {
     this.isLoginDefault = !this.isLoginDefault;
   }
 
-  openModal(modalType = 1) {
-    if (modalType === 1) {
-      this.modalPartners.open();
-    } else {
-      this.isLoginDefault = false;
-      this.modalCustomers.open();
-    }
+  signUp(isPartner = false) {
+    const route = isPartner ? 'signup-partners' : 'signup-customers';
+    this.router.navigate([route]);
+  }
+
+  loginDefault() {
+
+    localStorage.setItem('teste', 'logged');
+    this.router.navigate(['tocai/payments']);
+
   }
 
   mockCall() {
@@ -41,11 +44,13 @@ export class InitialPageComponent implements OnInit {
 
   }
 
-  loginDefault() {
-
-    localStorage.setItem('teste', 'logged');
-    this.router.navigate(['tocai/payments']);
-
+  openModal(modalType = 1) {
+    if (modalType === 1) {
+      this.modalPartners.open();
+    } else {
+      this.isLoginDefault = false;
+      this.modalCustomers.open();
+    }
   }
 
 }

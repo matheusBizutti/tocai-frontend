@@ -1,0 +1,72 @@
+<thf-page-default
+  t-title="Cadastre-se para novas oportunidades"
+  [t-breadcrumb]="breadcrumb">
+  
+  <form #signupPartnersForm="ngForm">
+
+    <div class="thf-row">
+      <thf-input
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-user"
+        t-label="Nome"
+        t-required>
+      </thf-input>
+
+      <thf-input
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-user"
+        t-label="Sobrenome"
+        t-required>
+      </thf-input>
+    </div>
+
+    <div class="thf-row">
+      <thf-email
+        class="thf-md-6"
+        t-clean
+        t-label="Email"
+        t-required>
+      </thf-email>
+  
+      <thf-password
+        class="thf-lg-6"
+        t-clean
+        t-label="Senha"
+        t-required>
+      </thf-password>
+    </div>
+
+    <div class="thf-row">
+      <thf-input
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-telephone"
+        t-label="Telefone"
+        t-mask="(99) 99999-9999"
+        t-required>
+      </thf-input>
+
+      <thf-input
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-world"
+        t-label="Cidade"
+        t-required>
+      </thf-input>
+    </div>
+
+    <div class="thf-row thf-pt-3">
+      <thf-button
+        class="thf-md-4"
+        t-label="Confirmar"
+        t-type="primary"
+        [t-disabled]="signupPartnersForm.invalid"
+        (t-click)="mockCall();">
+      </thf-button>
+    </div>
+
+  </form>
+
+</thf-page-default>

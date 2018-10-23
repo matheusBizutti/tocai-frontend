@@ -1,6 +1,6 @@
 <div class="container">
   <div class="container-fluid">
-    <div class="thf-row thf-pt-2 thf-pl-sm-2 thf-pr-sm-2 thf-pl-3 thf-pr-3">
+    <div class="thf-row thf-pt-lg-5 thf-pt-sm-2 thf-pl-sm-2 thf-pr-sm-2 thf-pl-3 thf-pr-3">
       <div class="thf-md-12">
         <h1 class="thf-font-display">Pulsando no ritmo do seu evento</h1>
       </div>
@@ -76,6 +76,18 @@
         [t-disabled]="formPartners.invalid"
         (t-click)="mockCall();">
       </thf-button>
+    </div>
+
+    <div class="thf-row">
+      <div class="thf-page-login-recovery-link">
+        <a class="thf-font-text-large-bold" (click)="signUp(true)">Esqueci minha senha</a>
+      </div>
+    </div>
+
+    <div class="thf-row">
+      <div class="thf-page-login-recovery-link thf-md-12">
+        <a class="thf-font-text-large-bold" (click)="signUp(true)">Cadastrar</a>
+      </div>
     </div>
   </form>
 
@@ -156,7 +168,7 @@
 
     <div class="thf-row">
       <div class="thf-page-login-recovery-link thf-md-12">
-        <a class="thf-font-text-large-bold" (click)="mockCall()">Cadastrar</a>
+        <a class="thf-font-text-large-bold" (click)="signUp(false)">Cadastrar</a>
       </div>
     </div>
   </form>

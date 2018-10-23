@@ -16,6 +16,12 @@ const routes: Routes = [
   { path: 'initial-page',
     loadChildren: './initial-page/initial-page.module#InitialPageModule'
   },
+  { path: 'signup-partners',
+    loadChildren: './signup-partners/signup-partners.module#SignupPartnersModule'
+  },
+  { path: 'signup-customers',
+    loadChildren: './signup-customers/signup-customers.module#SignupCustomersModule'
+  },
   { path: '', redirectTo: '/initial-page', pathMatch: 'full' }
 ];
 
