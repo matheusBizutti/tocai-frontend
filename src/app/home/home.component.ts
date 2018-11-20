@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
   filter = true;
   items: Array<ThfMenuItem> = [
     { label: 'Perfil', link: '/tocai/profile', icon: 'thf-icon-user', shortLabel: 'Perfil' },
-    { label: 'Fale conosco', link: '/tocai/profile', icon: 'thf-icon-chat', shortLabel: 'Mensagem' }
+    { label: 'Fale conosco', link: '/tocai/profile', icon: 'thf-icon-chat', shortLabel: 'Mensagem' },
+    { label: 'Músicos', link: '/tocai/musical-list', icon: 'thf-icon-layers', shortLabel: 'Músicos' }
   ];
 
   public readonly profile: ThfToolbarProfile = {

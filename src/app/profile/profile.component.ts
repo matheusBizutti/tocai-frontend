@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ThfBreadcrumb } from '@totvs/thf-ui';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  public readonly breadcrumb: ThfBreadcrumb = {
+    items: [
+      { label: 'Serviços musicais', link: '/tocai/musical-list' },
+      { label: 'Detalhe' }
+    ]
+  };
 
-  ngOnInit() {
-  }
+  constructor() {}
+
+  ngOnInit() {}
 
 }

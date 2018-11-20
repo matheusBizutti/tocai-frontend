@@ -1,3 +1,93 @@
-<p>
-  profile works!
-</p>
+<thf-page-default
+  [t-breadcrumb]="breadcrumb">
+
+  <form #changePersonalData="ngForm">
+
+    <div class="thf-font-title thf-mb-2">Dados pessoais</div>
+
+    <div class="thf-row">
+      <thf-input
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-user"
+        t-label="Nome"
+        t-required>
+      </thf-input>
+
+      <thf-input
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-user"
+        t-label="Sobrenome"
+        t-required>
+      </thf-input>
+    </div>
+
+    <div class="thf-row">
+      <thf-email
+        class="thf-md-6"
+        t-clean
+        t-label="Email"
+        t-required>
+      </thf-email>
+  
+      <thf-input
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-telephone"
+        t-label="Telefone"
+        t-mask="(99) 99999-9999"
+        t-required>
+      </thf-input>
+
+    </div>
+
+    <div class="thf-row thf-pt-3">
+      <thf-button
+        class="thf-md-4"
+        t-label="Salvar"
+        t-type="primary">
+      </thf-button>
+    </div>
+
+  </form>
+
+  <hr>
+
+  <form #changePassword="ngForm">
+
+    <div class="thf-font-title thf-mb-2">Senha</div>
+
+    <div class="thf-row">
+      <thf-password
+        class="thf-lg-6"
+        t-clean
+        t-label="Senha atual"
+        t-required>
+      </thf-password>
+
+      <thf-password
+        class="thf-lg-6"
+        t-clean
+        t-label="Nova senha"
+        t-required>
+      </thf-password>
+
+      <thf-password
+        class="thf-lg-6"
+        t-clean
+        t-label="Confirmar nova senha"
+        t-required>
+      </thf-password>
+    </div>
+
+    <div class="thf-row thf-pt-3">
+      <thf-button
+        class="thf-md-4"
+        t-label="Salvar nova senha"
+        t-type="primary">
+      </thf-button>
+    </div>
+  </form>
+
+</thf-page-default>
