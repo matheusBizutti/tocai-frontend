@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { ThfModalComponent } from '@totvs/thf-ui/components/thf-modal/thf-modal.component';
 
+import { AuthenticationTypeService } from '../authentication-type/authentication-type.service';
+
 @Component({
   selector: 'app-initial-page',
   templateUrl: './initial-page.component.html',
@@ -17,7 +19,7 @@ export class InitialPageComponent implements OnInit {
   private isLoginDefault: boolean;
   private password;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authenticationTypeService: AuthenticationTypeService) { }
 
   ngOnInit() { }
 
@@ -30,17 +32,15 @@ export class InitialPageComponent implements OnInit {
     this.router.navigate([route]);
   }
 
-  loginDefault() {
+  signin(type = '') {
 
     localStorage.setItem('teste', 'logged');
-    this.router.navigate(['tocai/payments']);
 
-  }
+    this.authenticationTypeService.setType(type);
 
-  mockCall() {
+    const route = type === '1' ? 'tocai/payments' : 'tocai/musical-list';
 
-    localStorage.setItem('teste', 'logged');
-    this.router.navigate(['tocai/payments']);
+    this.router.navigate([route]);
 
   }
 

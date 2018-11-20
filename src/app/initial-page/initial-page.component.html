@@ -74,7 +74,7 @@
         t-label="Entrar"
         t-type="primary"
         [t-disabled]="formPartners.invalid"
-        (t-click)="mockCall();">
+        (t-click)="signin('1');">
       </thf-button>
     </div>
 
@@ -103,7 +103,7 @@
       class="thf-md-12"
       t-label="ENTRAR COM FACEBOOK"
       t-type="default"
-      (t-click)="mockCall();">
+      (t-click)="signin('2');">
     </thf-button>
   </div>
 
@@ -112,7 +112,7 @@
       class="thf-md-12"
       t-label="ENTRAR COM GMAIL"
       t-type="danger"
-      (t-click)="mockCall();">
+      (t-click)="signin('2');">
     </thf-button>
   </div>
 
@@ -156,7 +156,7 @@
         t-label="Entrar"
         t-type="primary"
         [t-disabled]="formCustomers.invalid"
-        (t-click)="mockCall();">
+        (t-click)="signin('2');">
       </thf-button>
     </div>
 

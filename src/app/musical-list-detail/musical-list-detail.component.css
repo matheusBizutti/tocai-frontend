@@ -1,0 +1,17 @@
+.name-default {
+  color: #ffffff;
+  height: 200px;
+  background-color: #262254;
+}
+
+.container {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  vertical-align:middle;
+}
+
+.color-link {
+  color: #0c9abe;
+  cursor: pointer;
+}

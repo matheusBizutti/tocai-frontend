@@ -10,6 +10,15 @@ const routes: Routes = [
     children: [
       { path: 'payments',
         loadChildren: './payments/payments.module#PaymentsModule'
+      },
+      { path: 'musical-list',
+        loadChildren: './musical-list/musical-list.module#MusicalListModule'
+      },
+      { path: 'musical-list-detail/:id',
+        loadChildren: './musical-list-detail/musical-list-detail.module#MusicalListDetailModule'
+      },
+      { path: 'profile',
+        loadChildren: './profile/profile.module#ProfileModule'
       }
     ]
   },

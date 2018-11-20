@@ -15,9 +15,8 @@ export class HomeComponent implements OnInit {
 
   filter = true;
   items: Array<ThfMenuItem> = [
-    { label: 'Pagamentos', link: './users', icon: 'user', shortLabel: 'Pagtos' },
-    { label: 'Eventos', link: '', icon: 'world', shortLabel: 'Eventos' },
-    { label: 'Perfil', link: '', icon: 'calendar', shortLabel: 'Perfil' }
+    { label: 'Perfil', link: '/tocai/profile', icon: 'thf-icon-user', shortLabel: 'Perfil' },
+    { label: 'Fale conosco', link: '/tocai/profile', icon: 'thf-icon-chat', shortLabel: 'Mensagem' }
   ];
 
   public readonly profile: ThfToolbarProfile = {
@@ -28,17 +27,17 @@ export class HomeComponent implements OnInit {
   };
 
   public readonly profileActions: Array<ThfToolbarAction> = [
-    { icon: 'thf-icon-exit', label: 'Sair', type: 'danger', separator: true, action: () => {/* call exit*/} }
+    { icon: 'thf-icon-exit', label: 'Sair', type: 'danger', separator: true, action: () => this.exit() }
   ];
 
-  constructor(private route: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() { }
 
-  // private exit() {
-  //   this.authService.clear();
-  //   this.route.navigate(['/initial-page']);
-  // }
+  private exit() {
+    // this.authService.clear();
+    this.router.navigate(['initial-page']);
+  }
 
   // private getEmail() {
   //   const user = this.authService.getUser();
