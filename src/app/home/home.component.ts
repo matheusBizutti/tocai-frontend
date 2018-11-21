@@ -15,8 +15,7 @@ export class HomeComponent implements OnInit {
 
   filter = true;
   itemsDefault: Array<ThfMenuItem> = [
-    { label: 'Perfil', link: '/tocai/profile', icon: 'thf-icon-user', shortLabel: 'Perfil' },
-    { label: 'Mensagens', link: '/tocai/profile', icon: 'thf-icon-message', shortLabel: 'Mensagens' }
+    { label: 'Perfil', link: '/tocai/profile', icon: 'thf-icon-user', shortLabel: 'Perfil' }
   ];
 
   itemsCustomers: Array<ThfMenuItem> = [
@@ -26,8 +25,6 @@ export class HomeComponent implements OnInit {
   items = localStorage.getItem('userType') === '1' ? [...this.itemsDefault] : [...this.itemsCustomers, ...this.itemsDefault];
 
   public readonly profile: ThfToolbarProfile = {
-    // subtitle: this.getEmail(),
-    // title: this.getName()
     subtitle: 'subtitle teste',
     title: 'title teste'
   };
