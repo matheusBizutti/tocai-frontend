@@ -5,7 +5,7 @@
     <thf-widget 
       class="thf-md-6 thf-sm-mb-2 thf-mb-2 thf-lg-mb-2"
       *ngFor="let item of musicalList; let i = index"
-      t-primary-label="Contatar serviço"
+      t-primary-label="Visualizar perfil completo"
       (t-primary-action)="contact(item.id);"
       [t-title]="item.name">
 
@@ -19,19 +19,74 @@
               t-label="ESTILO MUSICAL"
               [t-value]="item.musicalStyle">
             </thf-info>
-            <thf-tag [t-value]="getType(item.type)"></thf-tag>
           </div>
           <div class="thf-mb-2">
             <thf-info
               class="thf-mt-5"
-              t-label="QUANTIDADE DE SHOWS"
-              [t-value]="item.quantityShows">
+              t-label="DISPONIBILIDADE DE VIAGEM"
+              [t-value]="getChange(item.change)">
             </thf-info>
           </div>
+        
+          <div class="thf-font-text-bold span-cursor thf-mb-2" (click)="modalOpen();">
+            <span class="thf-icon thf-icon-mail thf-mr-1"></span>
+            <label>ENVIAR MENSAGEM</label>
+          </div>
+
+          <div class="thf-mb-1">
+            <thf-tag [t-value]="getType(item.type)"></thf-tag>
+          </div>
         </div>
+
       </div>
 
     </thf-widget>
 
   </div>
 </thf-page-default>
+
+<thf-modal #modalMessageNow
+  t-click-out="true"
+  t-size="md"
+  t-title="Fale agora com o anunciante">
+
+  <form #sendMessageForm="ngForm">
+
+    <div class="thf-row">
+      <thf-textarea
+        name="textarea"
+        class="thf-md-12"
+        t-label="Mensagem"
+        t-required>
+      </thf-textarea>
+
+      <thf-input
+        class="thf-md-12"
+        name="name"
+        t-clean
+        t-icon="thf-icon-user"
+        t-label="Nome"
+        t-required>
+      </thf-input>
+
+      <thf-email
+        class="thf-md-12"
+        name="email"
+        t-clean
+        t-label="Email"
+        t-required>
+      </thf-email>
+    </div>
+
+    <div class="thf-row thf-pt-3">
+      <thf-button
+        class="thf-md-12"
+        t-label="Enviar mensagem"
+        t-type="primary"
+        [t-disabled]="sendMessageForm.invalid"
+        (t-click)="sendMail();">
+      </thf-button>
+    </div>
+
+  </form>
+</thf-modal>

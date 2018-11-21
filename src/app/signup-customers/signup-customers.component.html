@@ -6,6 +6,7 @@
 
     <div class="thf-row">
       <thf-input
+        name="name"
         class="thf-md-6"
         t-clean
         t-icon="thf-icon-user"
@@ -14,6 +15,7 @@
       </thf-input>
 
       <thf-input
+        name="lastName"
         class="thf-md-6"
         t-clean
         t-icon="thf-icon-user"
@@ -24,22 +26,15 @@
 
     <div class="thf-row">
       <thf-email
+        name="email"
         class="thf-md-6"
         t-clean
         t-label="Email"
         t-required>
       </thf-email>
   
-      <thf-password
-        class="thf-lg-6"
-        t-clean
-        t-label="Senha"
-        t-required>
-      </thf-password>
-    </div>
-
-    <div class="thf-row">
       <thf-input
+        name="telephone"
         class="thf-md-6"
         t-clean
         t-icon="thf-icon-telephone"
@@ -47,7 +42,46 @@
         t-mask="(99) 99999-9999"
         t-required>
       </thf-input>
+    </div>
 
+    <div class="thf-row">
+
+      <thf-password
+        name="password"
+        class="thf-lg-6"
+        t-clean
+        t-label="Senha"
+        t-required>
+      </thf-password>
+
+      <thf-password
+        name="confirmPassword"
+        class="thf-lg-6"
+        t-clean
+        t-label="Confirmar senha"
+        t-required>
+      </thf-password>
+
+    </div>
+
+    <div class="thf-row">
+      <thf-input
+        name="postalCode"
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-pin"
+        t-label="CEP"
+        t-required>
+      </thf-input>
+
+      <thf-input
+        name="city"
+        class="thf-md-6"
+        t-clean
+        t-icon="thf-icon-company"
+        t-label="Cidade"
+        t-required>
+      </thf-input>
     </div>
 
     <div class="thf-row thf-pt-3">

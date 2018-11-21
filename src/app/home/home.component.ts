@@ -14,11 +14,16 @@ import { ThfToolbarAction, ThfToolbarProfile } from '@totvs/thf-ui/components/th
 export class HomeComponent implements OnInit {
 
   filter = true;
-  items: Array<ThfMenuItem> = [
+  itemsDefault: Array<ThfMenuItem> = [
     { label: 'Perfil', link: '/tocai/profile', icon: 'thf-icon-user', shortLabel: 'Perfil' },
-    { label: 'Fale conosco', link: '/tocai/profile', icon: 'thf-icon-chat', shortLabel: 'Mensagem' },
+    { label: 'Mensagens', link: '/tocai/profile', icon: 'thf-icon-message', shortLabel: 'Mensagens' }
+  ];
+
+  itemsCustomers: Array<ThfMenuItem> = [
     { label: 'Músicos', link: '/tocai/musical-list', icon: 'thf-icon-layers', shortLabel: 'Músicos' }
   ];
+
+  items = localStorage.getItem('userType') === '1' ? [...this.itemsDefault] : [...this.itemsCustomers, ...this.itemsDefault];
 
   public readonly profile: ThfToolbarProfile = {
     // subtitle: this.getEmail(),

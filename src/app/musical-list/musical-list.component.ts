@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { ThfModalComponent } from '@totvs/thf-ui';
 
 @Component({
   selector: 'app-musical-list',
@@ -13,26 +15,26 @@ export class MusicalListComponent implements OnInit {
       id: '001',
       name: 'Jorge e Mateus',
       musicalStyle: 'Sertanejo',
-      quantityShows: '20',
+      change: '1',
       type: '2'
     },
     {
       id: '002',
       name: 'Lucas Lucco',
       musicalStyle: 'Sertanejo',
-      quantityShows: '2',
+      change: '2',
       type: '1'
     },
     {
       id: '003',
       name: 'MC KEKEL',
       musicalStyle: 'Funk',
-      quantityShows: '54',
+      change: '1',
       type: '1'
     }
   ];
 
-  typeReturn = '';
+  @ViewChild('modalMessageNow') modalMessageNow: ThfModalComponent;
 
   constructor(private router: Router) {}
 
@@ -46,29 +48,66 @@ export class MusicalListComponent implements OnInit {
 
   getType(type = '') {
 
+    let typeReturn = '';
+
     switch (type) {
 
       case '1': {
-        this.typeReturn = 'CARREIRA SOLO';
+        typeReturn = 'CARREIRA SOLO';
         break;
       }
       case '2': {
-        this.typeReturn = 'DUPLA';
+        typeReturn = 'DUPLA';
         break;
       }
       case '3': {
-        this.typeReturn = 'BANDA';
+        typeReturn = 'BANDA';
         break;
       }
       default: {
-        this.typeReturn = '';
+        typeReturn = '';
         break;
      }
 
     }
 
-    console.log('type: ', type, this.typeReturn);
-    return this.typeReturn;
+    return typeReturn;
+  }
+
+  getChange(type = '') {
+
+    let labelChangeReturn = '';
+
+    switch (type) {
+
+      case '1': {
+        labelChangeReturn = 'SIM';
+        break;
+      }
+      case '2': {
+        labelChangeReturn = 'NÃO';
+        break;
+      }
+      default: {
+        labelChangeReturn = '';
+        break;
+     }
+
+    }
+
+    return labelChangeReturn;
+  }
+
+  modalClose() {
+    this.modalMessageNow.close();
+  }
+
+  modalOpen() {
+    this.modalMessageNow.open();
+  }
+
+  sendMail() {
+    console.log('sendmail');
   }
 
 }

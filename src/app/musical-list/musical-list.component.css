@@ -1,0 +1,7 @@
+.span-cursor {
+  cursor: pointer;
+}
+
+label:hover {
+  color: #0c9abe;
+}

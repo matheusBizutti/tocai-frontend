@@ -25,6 +25,9 @@ const routes: Routes = [
   { path: 'initial-page',
     loadChildren: './initial-page/initial-page.module#InitialPageModule'
   },
+  { path: 'forgot-password',
+    loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule'
+  },
   { path: 'signup-partners',
     loadChildren: './signup-partners/signup-partners.module#SignupPartnersModule'
   },

@@ -27,6 +27,10 @@ export class InitialPageComponent implements OnInit {
     this.isLoginDefault = !this.isLoginDefault;
   }
 
+  forgotPassword() {
+    this.router.navigate(['/forgot-password']);
+  }
+
   signUp(isPartner = false) {
     const route = isPartner ? 'signup-partners' : 'signup-customers';
     this.router.navigate([route]);
@@ -38,7 +42,7 @@ export class InitialPageComponent implements OnInit {
 
     this.authenticationTypeService.setType(type);
 
-    const route = type === '1' ? 'tocai/payments' : 'tocai/musical-list';
+    const route = type === '1' ? 'tocai/profile' : 'tocai/musical-list';
 
     this.router.navigate([route]);
 
