@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
     ]
   };
 
+  userType = localStorage.getItem('userType');
+
   constructor() {}
 
   ngOnInit() {}

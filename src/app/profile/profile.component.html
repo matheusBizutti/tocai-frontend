@@ -1,56 +1,170 @@
 <thf-page-default
   [t-breadcrumb]="breadcrumb">
 
-  <form #changePersonalData="ngForm">
+  <div *ngIf="userType === '2'; else partners">
 
-    <div class="thf-font-title thf-mb-2">Dados pessoais</div>
+    <form #changePersonalData="ngForm" >
 
-    <div class="thf-row">
-      <thf-input
-        class="thf-md-6"
-        t-clean
-        t-icon="thf-icon-user"
-        t-label="Nome"
-        t-required>
-      </thf-input>
+      <div class="thf-font-title thf-mb-2">Dados pessoais</div>
 
-      <thf-input
-        class="thf-md-6"
-        t-clean
-        t-icon="thf-icon-user"
-        t-label="Sobrenome"
-        t-required>
-      </thf-input>
+      <div class="thf-row">
+        <thf-input
+          class="thf-md-6"
+          t-clean
+          t-icon="thf-icon-user"
+          t-label="Nome"
+          t-required>
+        </thf-input>
+
+        <thf-input
+          class="thf-md-6"
+          t-clean
+          t-icon="thf-icon-user"
+          t-label="Sobrenome"
+          t-required>
+        </thf-input>
+      </div>
+
+      <div class="thf-row">
+        <thf-email
+          class="thf-md-6"
+          t-clean
+          t-label="Email"
+          t-required>
+        </thf-email>
+    
+        <thf-input
+          class="thf-md-6"
+          t-clean
+          t-icon="thf-icon-telephone"
+          t-label="Telefone"
+          t-mask="(99) 99999-9999"
+          t-required>
+        </thf-input>
+
+      </div>
+
+      <div class="thf-row thf-pt-3">
+        <thf-button
+          class="thf-md-4"
+          t-label="Salvar"
+          t-type="primary">
+        </thf-button>
+      </div>
+
+    </form>
+  </div>
+
+  <ng-template #partners>
+    <div>
+      <form #signupPartnersForm="ngForm">
+
+        <div class="thf-row">
+          <thf-input
+            class="thf-md-6"
+            t-clean
+            t-icon="thf-icon-user"
+            t-label="Nome"
+            t-required>
+          </thf-input>
+    
+          <thf-input
+            class="thf-md-6"
+            t-clean
+            t-icon="thf-icon-user"
+            t-label="Sobrenome"
+            t-required>
+          </thf-input>
+        </div>
+    
+        <div class="thf-row">
+          <thf-email
+            class="thf-md-12 "
+            t-clean
+            t-label="Email"
+            t-required>
+          </thf-email>
+        </div>
+    
+        <div class="thf-row">
+          <thf-input
+            class="thf-md-6"
+            t-clean
+            t-icon="thf-icon-telephone"
+            t-label="Telefone"
+            t-mask="(99) 99999-9999"
+            t-required>
+          </thf-input>
+    
+          <thf-input
+            class="thf-md-6"
+            t-clean
+            t-icon="thf-icon-world"
+            t-label="Cidade"
+            t-required>
+          </thf-input>
+        </div>
+    
+        <div class="thf-row">
+          <thf-input
+            class="thf-md-6"
+            t-clean
+            t-icon="thf-icon-last-page"
+            t-label="Link youtube"
+            t-required>
+          </thf-input>
+    
+          <thf-input
+            class="thf-md-6"
+            t-clean
+            t-icon="thf-icon-last-page"
+            t-label="Link spotify"
+            t-required>
+          </thf-input>
+    
+        </div>
+    
+        <div class="thf-row">
+          <thf-select
+            name="change"
+            class="thf-md-6"
+            t-icon="thf-icon-change"
+            t-label="Disponibilidade de viagem"
+            [t-options]="[{label: 'Sim', value: '1'}, {label: 'Não', value: '2'}]">
+          </thf-select>
+
+          <thf-select
+            name="type"
+            class="thf-md-6"
+            t-label="Tipo de apresentação"
+            t-required
+            [t-options]="[{label: 'Carreira solo', value: '1'}, {label: 'Dupla', value: '2'}, {label: 'Banda', value: '3'}]">
+          </thf-select>
+        </div>
+
+        <div class="thf-row">
+          <thf-input
+            class="thf-md-6"
+            t-clean
+            t-label="Estilo musical"
+            t-placeholder="Ex: sertanejo"
+            t-required>
+          </thf-input>
+        </div>
+    
+        <div class="thf-row thf-pt-3">
+          <thf-button
+            class="thf-md-4"
+            t-label="Confirmar"
+            t-type="primary"
+            [t-disabled]="signupPartnersForm.invalid"
+            (t-click)="mockCall();">
+          </thf-button>
+        </div>
+    
+      </form>
     </div>
-
-    <div class="thf-row">
-      <thf-email
-        class="thf-md-6"
-        t-clean
-        t-label="Email"
-        t-required>
-      </thf-email>
-  
-      <thf-input
-        class="thf-md-6"
-        t-clean
-        t-icon="thf-icon-telephone"
-        t-label="Telefone"
-        t-mask="(99) 99999-9999"
-        t-required>
-      </thf-input>
-
-    </div>
-
-    <div class="thf-row thf-pt-3">
-      <thf-button
-        class="thf-md-4"
-        t-label="Salvar"
-        t-type="primary">
-      </thf-button>
-    </div>
-
-  </form>
+  </ng-template>
 
   <hr>
 

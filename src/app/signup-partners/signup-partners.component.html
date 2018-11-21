@@ -84,6 +84,24 @@
         t-label="Disponibilidade de viagem"
         [t-options]="[{label: 'Sim', value: '1'}, {label: 'Não', value: '2'}]">
       </thf-select>
+
+      <thf-select
+        name="type"
+        class="thf-md-6"
+        t-label="Tipo de apresentação"
+        t-required
+        [t-options]="[{label: 'Carreira solo', value: '1'}, {label: 'Dupla', value: '2'}, {label: 'Banda', value: '3'}]">
+      </thf-select>
+    </div>
+
+    <div class="thf-row">
+      <thf-input
+        class="thf-md-6"
+        t-clean
+        t-label="Estilo musical"
+        t-placeholder="Ex: sertanejo"
+        t-required>
+      </thf-input>
     </div>
 
     <div class="thf-row thf-pt-3">
