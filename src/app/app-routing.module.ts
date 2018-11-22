@@ -22,6 +22,12 @@ const routes: Routes = [
       }
     ]
   },
+  { path: 'doubts',
+    loadChildren: './doubts/doubts.module#DoubtsModule'
+  },
+  { path: 'history',
+    loadChildren: './history/history.module#HistoryModule'
+  },
   { path: 'initial-page',
     loadChildren: './initial-page/initial-page.module#InitialPageModule'
   },

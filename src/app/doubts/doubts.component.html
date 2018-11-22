@@ -1,0 +1,15 @@
+<thf-page-default t-title="Dúvidas frequentes" [t-breadcrumb]="breadcrumb">
+
+  <thf-list-view
+    t-property-title="question"
+    [t-items]="items">
+  
+    <ng-template t-list-view-content-template let-item>
+      <div class="thf-row">
+        <thf-info class="thf-md-12" [t-value]="item.answer"></thf-info>
+      </div>
+    </ng-template>
+  
+  </thf-list-view>
+  
+</thf-page-default>
