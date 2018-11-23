@@ -19,6 +19,7 @@ export class AuthenticationTypeService {
       this.userType = '2'; // - customers
     }
 
+    localStorage.setItem('userType', this.userType);
     this.authService.setUserType(this.userType);
 
   }

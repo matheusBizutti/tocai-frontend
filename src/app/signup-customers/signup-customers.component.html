@@ -6,8 +6,9 @@
 
     <div class="thf-row">
       <thf-input
-        name="name"
         class="thf-md-6"
+        name="name"
+        [(ngModel)]="customerPersonalData.name"
         t-clean
         t-icon="thf-icon-user"
         t-label="Nome"
@@ -15,8 +16,9 @@
       </thf-input>
 
       <thf-input
-        name="lastName"
         class="thf-md-6"
+        name="lastname"
+        [(ngModel)]="customerPersonalData.lastname"
         t-clean
         t-icon="thf-icon-user"
         t-label="Sobrenome"
@@ -26,16 +28,18 @@
 
     <div class="thf-row">
       <thf-email
-        name="email"
         class="thf-md-6"
+        name="email"
+        [(ngModel)]="customerPersonalData.email"
         t-clean
         t-label="Email"
         t-required>
       </thf-email>
   
       <thf-input
-        name="telephone"
         class="thf-md-6"
+        name="telefone"
+        [(ngModel)]="customerPersonalData.telefone"
         t-clean
         t-icon="thf-icon-telephone"
         t-label="Telefone"
@@ -47,16 +51,18 @@
     <div class="thf-row">
 
       <thf-password
-        name="password"
         class="thf-lg-6"
+        name="password"
+        [(ngModel)]="customerPersonalData.password"
         t-clean
         t-label="Senha"
         t-required>
       </thf-password>
 
       <thf-password
-        name="confirmPassword"
         class="thf-lg-6"
+        name="confirmpassword"
+        [(ngModel)]="customerPersonalData.confirmpassword"
         t-clean
         t-label="Confirmar senha"
         t-required>
@@ -66,8 +72,9 @@
 
     <div class="thf-row">
       <thf-input
-        name="postalCode"
         class="thf-md-6"
+        name="postalcode"
+        [(ngModel)]="customerPersonalData.postalcode"
         t-clean
         t-icon="thf-icon-pin"
         t-label="CEP"
@@ -75,8 +82,9 @@
       </thf-input>
 
       <thf-input
-        name="city"
         class="thf-md-6"
+        name="city"
+        [(ngModel)]="customerPersonalData.city"
         t-clean
         t-icon="thf-icon-company"
         t-label="Cidade"
@@ -90,7 +98,7 @@
         t-label="Confirmar"
         t-type="primary"
         [t-disabled]="signupCustomersForm.invalid"
-        (t-click)="mockCall();">
+        (t-click)="signupCustomers();">
       </thf-button>
     </div>
 

@@ -70,6 +70,7 @@ export class InitialPageComponent implements OnInit, OnDestroy {
     this.subscription = this.initialPageService.siginAuth(body).subscribe(response => {
 
       this.authService.setToken(response['token']);
+      this.authService.setUserType(type);
       this.router.navigate([route]);
 
     }, err => {

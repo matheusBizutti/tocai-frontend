@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { SignupPartnersComponent } from './signup-partners.component';
 import { SignupPartnersRouting } from './signup-partners.routing';
+import { SignupService } from './signup-partners.service';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { SignupPartnersRouting } from './signup-partners.routing';
   declarations: [
     SignupPartnersComponent
   ],
-  providers: [],
+  providers: [SignupService],
   bootstrap: []
 })
 export class SignupPartnersModule {}

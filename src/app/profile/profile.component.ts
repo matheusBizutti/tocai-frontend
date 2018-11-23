@@ -57,10 +57,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.subscriptionPersonalData.unsubscribe();
     }
 
+    this.userType = undefined;
+
   }
 
   ngOnInit() {
-    this.userType = this.authService.getUserType();
+    this.userType = localStorage.getItem('userType');
     this.email = this.authService.getEmail();
   }
 

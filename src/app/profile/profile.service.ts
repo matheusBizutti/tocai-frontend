@@ -20,7 +20,7 @@ export class ProfileService {
 
     const type = typeUser === '1' ? '/change-password-partners' : '/change-password-customers';
 
-    return this.http.put(this.baseUrl.getBaseUrlAuthenticate() + + `${email}` + type,  body);
+    return this.http.put(this.baseUrl.getBaseUrlAuthenticate() + `${email}` + type,  body);
   }
 
 }
