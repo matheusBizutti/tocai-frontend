@@ -28,7 +28,7 @@
             </thf-info>
           </div>
         
-          <div class="thf-font-text-bold span-cursor thf-mb-2" (click)="modalOpen();">
+          <div class="thf-font-text-bold span-cursor thf-mb-2" (click)="modalOpen(item.email);">
             <span class="thf-icon thf-icon-mail thf-mr-1"></span>
             <label>ENVIAR MENSAGEM</label>
           </div>
@@ -54,28 +54,21 @@
 
     <div class="thf-row">
       <thf-textarea
-        name="textarea"
         class="thf-md-12"
+        name="textarea"
+        [(ngModel)]="sendmail.html"
         t-label="Mensagem"
         t-required>
       </thf-textarea>
 
       <thf-input
         class="thf-md-12"
-        name="name"
+        name="subject"
+        [(ngModel)]="sendmail.subject"
         t-clean
-        t-icon="thf-icon-user"
-        t-label="Nome"
+        t-label="Titulo do e-mail"
         t-required>
       </thf-input>
-
-      <thf-email
-        class="thf-md-12"
-        name="email"
-        t-clean
-        t-label="Email"
-        t-required>
-      </thf-email>
     </div>
 
     <div class="thf-row thf-pt-3">

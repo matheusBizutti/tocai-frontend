@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ThfModalComponent, ThfNotificationService } from '@totvs/thf-ui';
+
+import { AuthService } from '../auth/auth.service';
 import { MusicalListService } from './musical-list.service';
 
 @Component({
@@ -14,17 +16,32 @@ import { MusicalListService } from './musical-list.service';
 export class MusicalListComponent implements OnInit, OnDestroy {
 
   musicalList: Array<Object>;
+  sendmail = {
+    from: '',
+    to: '',
+    subject: '',
+    html: ''
+  };
+
+  email;
 
   private subscription: Subscription;
+  private subscriptionMail: Subscription;
+
   @ViewChild('modalMessageNow') modalMessageNow: ThfModalComponent;
 
   constructor(private router: Router,
               private thfNotification: ThfNotificationService,
-              private musicalListService: MusicalListService) {}
+              private musicalListService: MusicalListService,
+              private authService: AuthService) {}
 
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
+    }
+
+    if (this.subscriptionMail) {
+      this.subscriptionMail.unsubscribe();
     }
   }
 
@@ -96,12 +113,31 @@ export class MusicalListComponent implements OnInit, OnDestroy {
     this.modalMessageNow.close();
   }
 
-  modalOpen() {
+  modalOpen(email) {
+    this.email = email;
     this.modalMessageNow.open();
   }
 
   sendMail() {
-    console.log('sendmail');
+
+    this.sendmail.from = this.authService.getEmail();
+    this.sendmail.to = this.email;
+
+    const bodyMail = this.sendmail.html;
+    this.sendmail.html = `De: ` + `${this.sendmail.from}` + ` Para: ` + `${this.sendmail.to}` + ' ' + bodyMail;
+
+    this.subscriptionMail = this.musicalListService.sendMail(this.sendmail).subscribe(response => {
+      this.thfNotification.success('E-mail enviado com sucesso.');
+      this.sendmail = {
+        from: undefined,
+        to: undefined,
+        subject: undefined,
+        html: undefined
+      };
+      this.modalClose();
+    }, err => {
+      this.thfNotification.error('Não foi possível enviar o e-mail');
+    });
   }
 
 }

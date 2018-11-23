@@ -13,5 +13,9 @@ export class MusicalListService {
     return this.http.get(this.baseUrl.getBaseUrl() + 'musical-list/list/' + `${type}`);
   }
 
+  sendMail(body): Observable<any> {
+    return this.http.post(this.baseUrl.getBaseUrl() + 'musical-list/sendmail', body);
+  }
+
 }
 
