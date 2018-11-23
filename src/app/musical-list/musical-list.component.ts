@@ -1,48 +1,42 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ThfModalComponent } from '@totvs/thf-ui';
+import { Subscription } from 'rxjs';
+
+import { ThfModalComponent, ThfNotificationService } from '@totvs/thf-ui';
+import { MusicalListService } from './musical-list.service';
 
 @Component({
   selector: 'app-musical-list',
   templateUrl: './musical-list.component.html',
   styleUrls: ['./musical-list.component.css']
 })
-export class MusicalListComponent implements OnInit {
+export class MusicalListComponent implements OnInit, OnDestroy {
 
-  musicalList: Array<Object> = [
-    {
-      id: '001',
-      name: 'Jorge e Mateus',
-      musicalStyle: 'Sertanejo',
-      change: '1',
-      type: '2'
-    },
-    {
-      id: '002',
-      name: 'Lucas Lucco',
-      musicalStyle: 'Sertanejo',
-      change: '2',
-      type: '1'
-    },
-    {
-      id: '003',
-      name: 'MC KEKEL',
-      musicalStyle: 'Funk',
-      change: '1',
-      type: '1'
-    }
-  ];
+  musicalList: Array<Object>;
 
+  private subscription: Subscription;
   @ViewChild('modalMessageNow') modalMessageNow: ThfModalComponent;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private thfNotification: ThfNotificationService,
+              private musicalListService: MusicalListService) {}
 
-  ngOnInit() {}
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
-  contact(id = '') {
+  ngOnInit() {
+    this.subscription = this.musicalListService.getMusicalList('1').subscribe(response => {
+      this.musicalList = [...response];
+    });
+  }
 
-    this.router.navigate(['tocai/musical-list-detail/' + id]);
+  contact(email = '') {
+
+    this.router.navigate(['tocai/musical-list-detail/' + email]);
 
   }
 

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { AuthService } from '../auth/auth.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -7,7 +9,7 @@ export class AuthenticationTypeService {
 
   private userType = ''; // - 1 partners - 2 customers;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   setType(userType = '') {
 
@@ -17,7 +19,7 @@ export class AuthenticationTypeService {
       this.userType = '2'; // - customers
     }
 
-    localStorage.setItem('userType', this.userType);
+    this.authService.setUserType(this.userType);
 
   }
 

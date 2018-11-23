@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { MusicalListComponent } from './musical-list.component';
 import { MusicalListRouting } from './musical-list.routing';
+import { MusicalListService } from './musical-list.service';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { MusicalListRouting } from './musical-list.routing';
   declarations: [
     MusicalListComponent
   ],
-  providers: [],
+  providers: [MusicalListService],
   bootstrap: []
 })
 export class MusicalListModule {}

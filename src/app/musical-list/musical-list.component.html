@@ -6,7 +6,7 @@
       class="thf-md-6 thf-sm-mb-2 thf-mb-2 thf-lg-mb-2"
       *ngFor="let item of musicalList; let i = index"
       t-primary-label="Visualizar perfil completo"
-      (t-primary-action)="contact(item.id);"
+      (t-primary-action)="contact(item.email);"
       [t-title]="item.name">
 
       <div class="thf-row">
@@ -17,14 +17,14 @@
           <div class="thf-mb-2">
             <thf-info
               t-label="ESTILO MUSICAL"
-              [t-value]="item.musicalStyle">
+              [t-value]="item.musicalstyle">
             </thf-info>
           </div>
           <div class="thf-mb-2">
             <thf-info
               class="thf-mt-5"
               t-label="DISPONIBILIDADE DE VIAGEM"
-              [t-value]="getChange(item.change)">
+              [t-value]="getChange(item.travel)">
             </thf-info>
           </div>
         

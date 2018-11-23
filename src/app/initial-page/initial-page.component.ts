@@ -1,16 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ThfModalComponent } from '@totvs/thf-ui/components/thf-modal/thf-modal.component';
+import { Subscription } from 'rxjs';
 
+import { ThfModalComponent } from '@totvs/thf-ui/components/thf-modal/thf-modal.component';
+import { ThfNotificationService } from '@totvs/thf-ui';
+
+import { AuthService } from '../auth/auth.service';
 import { AuthenticationTypeService } from '../authentication-type/authentication-type.service';
+import { InitialPageService } from './initial-page.service';
 
 @Component({
   selector: 'app-initial-page',
   templateUrl: './initial-page.component.html',
   styleUrls: ['./initial-page.component.css']
 })
-export class InitialPageComponent implements OnInit {
+export class InitialPageComponent implements OnInit, OnDestroy {
 
   @ViewChild('modalCustomers') modalCustomers: ThfModalComponent;
   @ViewChild('modalPartners') modalPartners: ThfModalComponent;
@@ -18,8 +23,21 @@ export class InitialPageComponent implements OnInit {
   private login;
   private isLoginDefault: boolean;
   private password;
+  private subscription: Subscription;
 
-  constructor(private router: Router, private authenticationTypeService: AuthenticationTypeService) { }
+  constructor(private router: Router,
+              private authenticationTypeService: AuthenticationTypeService,
+              private thfNotification: ThfNotificationService,
+              private initialPageService: InitialPageService,
+              private authService: AuthService) { }
+
+  ngOnDestroy() {
+
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+  }
 
   ngOnInit() { }
 
@@ -38,13 +56,25 @@ export class InitialPageComponent implements OnInit {
 
   signin(type = '') {
 
-    localStorage.setItem('teste', 'logged');
-
     this.authenticationTypeService.setType(type);
 
     const route = type === '1' ? 'tocai/profile' : 'tocai/musical-list';
 
-    this.router.navigate([route]);
+    const INVALID_ACCESS = 'Acesso inválido';
+
+    const body = {
+      email:  this.login,
+      password: this.password
+    };
+
+    this.subscription = this.initialPageService.siginAuth(body).subscribe(response => {
+
+      this.authService.setToken(response['token']);
+      this.router.navigate([route]);
+
+    }, err => {
+      this.thfNotification.error(INVALID_ACCESS);
+    });
 
   }
 

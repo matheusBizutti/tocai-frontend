@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ProfileComponent } from './profile.component';
 import { ProfileRouting } from './profile.routing';
+import { ProfileService } from './profile.service';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { ProfileRouting } from './profile.routing';
   declarations: [
     ProfileComponent
   ],
-  providers: [],
+  providers: [ProfileService],
   bootstrap: []
 })
 export class ProfileModule { }

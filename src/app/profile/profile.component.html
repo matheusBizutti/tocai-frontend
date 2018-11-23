@@ -10,6 +10,8 @@
       <div class="thf-row">
         <thf-input
           class="thf-md-6"
+          name="name"
+          [(ngModel)]="customerPersonalData.name"
           t-clean
           t-icon="thf-icon-user"
           t-label="Nome"
@@ -18,6 +20,8 @@
 
         <thf-input
           class="thf-md-6"
+          name="lastname"
+          [(ngModel)]="customerPersonalData.lastname"
           t-clean
           t-icon="thf-icon-user"
           t-label="Sobrenome"
@@ -26,15 +30,11 @@
       </div>
 
       <div class="thf-row">
-        <thf-email
-          class="thf-md-6"
-          t-clean
-          t-label="Email"
-          t-required>
-        </thf-email>
     
         <thf-input
           class="thf-md-6"
+          name="telefone"
+          [(ngModel)]="customerPersonalData.telefone"
           t-clean
           t-icon="thf-icon-telephone"
           t-label="Telefone"
@@ -48,7 +48,9 @@
         <thf-button
           class="thf-md-4"
           t-label="Salvar"
-          t-type="primary">
+          t-type="primary"
+          [t-disabled]="changePersonalData.invalid"
+          (click)="changePersonalDataProfile('2');">
         </thf-button>
       </div>
 
@@ -65,6 +67,8 @@
         <div class="thf-row">
           <thf-input
             class="thf-md-6"
+            name="name"
+            [(ngModel)]="partnerPersonalData.name"
             t-clean
             t-icon="thf-icon-user"
             t-label="Nome"
@@ -73,6 +77,8 @@
     
           <thf-input
             class="thf-md-6"
+            name="lastname"
+            [(ngModel)]="partnerPersonalData.lastname"
             t-clean
             t-icon="thf-icon-user"
             t-label="Sobrenome"
@@ -81,17 +87,10 @@
         </div>
     
         <div class="thf-row">
-          <thf-email
-            class="thf-md-12 "
-            t-clean
-            t-label="Email"
-            t-required>
-          </thf-email>
-        </div>
-    
-        <div class="thf-row">
           <thf-input
             class="thf-md-6"
+            name="telefone"
+            [(ngModel)]="partnerPersonalData.telefone"
             t-clean
             t-icon="thf-icon-telephone"
             t-label="Telefone"
@@ -101,6 +100,8 @@
     
           <thf-input
             class="thf-md-6"
+            name="city"
+            [(ngModel)]="partnerPersonalData.city"
             t-clean
             t-icon="thf-icon-world"
             t-label="Cidade"
@@ -111,6 +112,8 @@
         <div class="thf-row">
           <thf-input
             class="thf-md-6"
+            name="linkyoutube"
+            [(ngModel)]="partnerPersonalData.linkyoutube"
             t-clean
             t-icon="thf-icon-last-page"
             t-label="Link youtube"
@@ -119,6 +122,8 @@
     
           <thf-input
             class="thf-md-6"
+            name="linkspotify"
+            [(ngModel)]="partnerPersonalData.linkspotify"
             t-clean
             t-icon="thf-icon-last-page"
             t-label="Link spotify"
@@ -129,16 +134,19 @@
     
         <div class="thf-row">
           <thf-select
-            name="change"
             class="thf-md-6"
+            name="travel"
+            [(ngModel)]="partnerPersonalData.travel"
             t-icon="thf-icon-change"
             t-label="Disponibilidade de viagem"
+            t-required
             [t-options]="[{label: 'Sim', value: '1'}, {label: 'Não', value: '2'}]">
           </thf-select>
 
           <thf-select
-            name="type"
             class="thf-md-6"
+            name="type"
+            [(ngModel)]="partnerPersonalData.type"
             t-label="Tipo de apresentação"
             t-required
             [t-options]="[{label: 'Carreira solo', value: '1'}, {label: 'Dupla', value: '2'}, {label: 'Banda', value: '3'}]">
@@ -148,6 +156,8 @@
         <div class="thf-row">
           <thf-input
             class="thf-md-6"
+            name="musicalstyle"
+            [(ngModel)]="partnerPersonalData.musicalstyle"
             t-clean
             t-label="Estilo musical"
             t-placeholder="Ex: sertanejo"
@@ -161,50 +171,12 @@
             t-label="Confirmar"
             t-type="primary"
             [t-disabled]="signupPartnersForm.invalid"
-            (t-click)="mockCall();">
+            (click)="changePersonalDataProfile('1');">
           </thf-button>
         </div>
     
       </form>
     </div>
   </ng-template>
-
-  <hr>
-
-  <form #changePassword="ngForm">
-
-    <div class="thf-font-title thf-mb-2">Senha</div>
-
-    <div class="thf-row">
-      <thf-password
-        class="thf-lg-6"
-        t-clean
-        t-label="Senha atual"
-        t-required>
-      </thf-password>
-
-      <thf-password
-        class="thf-lg-6"
-        t-clean
-        t-label="Nova senha"
-        t-required>
-      </thf-password>
-
-      <thf-password
-        class="thf-lg-6"
-        t-clean
-        t-label="Confirmar nova senha"
-        t-required>
-      </thf-password>
-    </div>
-
-    <div class="thf-row thf-pt-3">
-      <thf-button
-        class="thf-md-4"
-        t-label="Salvar nova senha"
-        t-type="primary">
-      </thf-button>
-    </div>
-  </form>
 
 </thf-page-default>

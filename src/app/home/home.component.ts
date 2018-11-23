@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ThfMenuItem } from '@totvs/thf-ui/components/thf-menu';
 import { ThfToolbarAction, ThfToolbarProfile } from '@totvs/thf-ui/components/thf-toolbar';
 
-// import { AuthService } from './../auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -22,34 +22,28 @@ export class HomeComponent implements OnInit {
     { label: 'Músicos', link: '/tocai/musical-list', icon: 'thf-icon-layers', shortLabel: 'Músicos' }
   ];
 
-  items = localStorage.getItem('userType') === '1' ? [...this.itemsDefault] : [...this.itemsCustomers, ...this.itemsDefault];
+  items = this.authService.getUserType() === '1' ? [...this.itemsDefault] : [...this.itemsCustomers, ...this.itemsDefault];
 
   public readonly profile: ThfToolbarProfile = {
-    subtitle: 'subtitle teste',
-    title: 'title teste'
+    title: this.getEmail()
   };
 
   public readonly profileActions: Array<ThfToolbarAction> = [
     { icon: 'thf-icon-exit', label: 'Sair', type: 'danger', separator: true, action: () => this.exit() }
   ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() { }
 
   private exit() {
-    // this.authService.clear();
+    this.authService.clear();
     this.router.navigate(['initial-page']);
   }
 
-  // private getEmail() {
-  //   const user = this.authService.getUser();
-  //   return user.email;
-  // }
-
-  // private getName() {
-  //   const user = this.authService.getUser();
-  //   return user.name;
-  // }
+  private getEmail() {
+    const user = this.authService.getEmail();
+    return user;
+  }
 
 }
